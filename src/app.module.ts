@@ -3,7 +3,7 @@ import { AppController } from "./app.controller";
 import { AppService } from "./app.service";
 import { TypeOrmModule } from "@nestjs/typeorm";
 import { getConnectionOptions } from "typeorm";
-import { TopicModule } from "./modules/topic/topic.module";
+import { TopicModule } from "./modules/topics/topics.module";
 import { AuthModule } from "./modules/auth/auth.module";
 import { UsersModule } from "./modules/users/users.module";
 

@@ -8,10 +8,8 @@ import { LocalAuthGuard } from "../auth/guards/local-auth.guard";
 export class TopicController {
   constructor(@InjectRepository(Topic) private readonly topicRepository: Repository<Topic>) {}
 
-  @UseGuards(LocalAuthGuard)
   @Get()
   getTopics(@Request() req) {
-    console.log(req.user);
     return this.topicRepository.find();
   }
 

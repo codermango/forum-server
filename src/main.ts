@@ -2,6 +2,9 @@ import { NestFactory } from "@nestjs/core";
 import * as session from "express-session";
 import { AppModule } from "./app.module";
 import * as passport from "passport";
+import * as MySQLStore from "express-mysql-session";
+
+const MysqlSessionStore = MySQLStore(session);
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -14,6 +17,13 @@ async function bootstrap() {
       cookie: {
         maxAge: 10000,
       },
+      store: new MysqlSessionStore({
+        host: "localhost",
+        port: 3306,
+        user: "root",
+        password: "root",
+        database: "forum",
+      }),
     }),
   );
 

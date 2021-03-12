@@ -9,7 +9,7 @@ import { jwtConstants } from "./constants";
 import { JwtStrategy } from "./strategies/jwt.strategy";
 import { LocalStrategy } from "./strategies/local.strategy";
 import { RolesGuard } from "./guards/roles.guard";
-import { SessionSerializer } from "../../session.serializer";
+import { SessionSerializer } from "./session.serializer";
 
 @Module({
   providers: [AuthService, LocalStrategy, SessionSerializer],

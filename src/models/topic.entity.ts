@@ -1,7 +1,8 @@
-import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
+import { BaseEntity, Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { Base } from "./base";
 
 @Entity()
-export class Topic {
+export class Topic extends Base {
   @PrimaryGeneratedColumn()
   id: string;
 
@@ -35,9 +36,9 @@ export class Topic {
   @Column()
   country_id: string;
 
-  @CreateDateColumn()
-  created_at: Date;
+  // @CreateDateColumn()
+  // created_at: Date;
 
-  @UpdateDateColumn()
-  updated_at: Date;
+  // @UpdateDateColumn()
+  // updated_at: Date;
 }

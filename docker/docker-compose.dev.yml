@@ -2,7 +2,7 @@ version: "3"
 services:
   forum-mysql:
     container_name: forum-mysql
-    image: mysql:8.0
+    image: mysql:5
     restart: "no"
     ports:
       - "3306:3306"
