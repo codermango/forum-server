@@ -9,16 +9,17 @@ import { jwtConstants } from "./constants";
 import { JwtStrategy } from "./strategies/jwt.strategy";
 import { LocalStrategy } from "./strategies/local.strategy";
 import { RolesGuard } from "./guards/roles.guard";
+import { SessionSerializer } from "../../session.serializer";
 
 @Module({
-  providers: [AuthService, LocalStrategy, JwtStrategy, RolesGuard],
+  providers: [AuthService, LocalStrategy, SessionSerializer],
   imports: [
     UsersModule,
-    PassportModule,
-    JwtModule.register({
-      secret: jwtConstants.secret,
-      signOptions: { expiresIn: "60000s" },
-    }),
+    // PassportModule,
+    // JwtModule.register({
+    //   secret: jwtConstants.secret,
+    //   signOptions: { expiresIn: "60000s" },
+    // }),
   ],
   controllers: [AuthController],
 })

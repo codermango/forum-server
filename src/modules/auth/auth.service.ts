@@ -7,7 +7,7 @@ import * as bcrypt from "bcrypt";
 
 @Injectable()
 export class AuthService {
-  constructor(private usersService: UsersService, private jwtService: JwtService) {}
+  constructor(private usersService: UsersService) {}
 
   async signup(user: UserSignupDto) {
     const userData = await this.usersService.findUserByUsername(user.username);
@@ -34,10 +34,20 @@ export class AuthService {
       if (!isMatch) {
         return { statusCode: HttpStatus.UNAUTHORIZED, message: "Password is wrong!" };
       } else {
-        return { statusCode: HttpStatus.FOUND };
+        return { statusCode: HttpStatus.FOUND, username: userData.username };
       }
     } catch (e) {
       throw new Error(e);
     }
+  }
+
+  async validateUser(username: string, password: string): Promise<any> {
+    const userData = await this.usersService.findUserByUsername(username);
+    const passwordMatch = await bcrypt.compare(password, userData.password);
+    if (userData && passwordMatch) {
+      const { password, ...result } = userData;
+      return result;
+    }
+    return null;
   }
 }
