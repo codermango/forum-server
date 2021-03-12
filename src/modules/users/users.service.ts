@@ -1,19 +1,21 @@
-import { Injectable } from '@nestjs/common';
-
-export type User = any;
+import { Injectable } from "@nestjs/common";
+import { User } from "src/models/user.entity";
+import { Role } from "../auth/enums/role.enum";
 
 @Injectable()
 export class UsersService {
-  private readonly users = [
+  private readonly users: User[] = [
     {
-      userId: 1,
-      username: 'john',
-      password: 'changeme',
+      user_id: 1,
+      username: "john",
+      password: "changeme",
+      roles: [Role.Admin],
     },
     {
-      userId: 2,
-      username: 'maria',
-      password: 'guess',
+      user_id: 2,
+      username: "maria",
+      password: "guess",
+      roles: [Role.Admin],
     },
   ];
 
