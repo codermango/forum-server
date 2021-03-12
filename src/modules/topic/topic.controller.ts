@@ -1,10 +1,11 @@
-import { Controller, Get, Inject, Post } from '@nestjs/common';
-import { Topic } from 'src/models/topic.entity';
-import { Repository } from 'typeorm';
+import { Controller, Get, Inject, Post } from "@nestjs/common";
+import { InjectRepository } from "@nestjs/typeorm";
+import { Topic } from "src/models/topic.entity";
+import { Repository } from "typeorm";
 
-@Controller('topics')
+@Controller("topics")
 export class TopicController {
-  constructor(@Inject('topic_repository') private readonly topicRepository: Repository<Topic>) {}
+  constructor(@InjectRepository(Topic) private readonly topicRepository: Repository<Topic>) {}
 
   @Get()
   getTopics() {
@@ -14,10 +15,10 @@ export class TopicController {
   @Post()
   createTopic() {
     const topic = new Topic();
-    topic.author_id = 'aaa';
-    topic.content = 'hiafhiefiafjiejfiajfiaefjiefjaief';
-    topic.country_id = 'se';
-    topic.title = 'test';
+    topic.author_id = "aaa";
+    topic.content = "hiafhiefiafjiejfiajfiaefjiefjaief";
+    topic.country_id = "se";
+    topic.title = "test";
     this.topicRepository.insert(topic);
   }
 }

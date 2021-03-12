@@ -1,9 +1,11 @@
 import { Role } from "src/modules/auth/enums/role.enum";
-import { Column } from "typeorm";
+import { BeforeInsert, Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import * as bcrypt from "bcrypt";
 
+@Entity()
 export class User {
-  @Column()
-  user_id: number;
+  @PrimaryGeneratedColumn()
+  id: number;
 
   @Column()
   username: string;
@@ -11,6 +13,8 @@ export class User {
   @Column()
   password: string;
 
-  @Column()
-  roles: Role[];
+  @BeforeInsert()
+  async hashPassword() {
+    this.password = await bcrypt.hash(this.password, 10);
+  }
 }

@@ -11,24 +11,24 @@ import { RolesGuard } from "./guards/roles.guard";
 export class AuthController {
   constructor(private authService: AuthService) {}
 
-  @UseGuards(LocalAuthGuard)
-  @Post("login")
-  async login(@Request() req) {
-    return this.authService.login(req.user);
-  }
+  // @UseGuards(LocalAuthGuard)
+  // @Post("login")
+  // async login(@Request() req) {
+  //   return this.authService.login(req.user);
+  // }
 
-  @UseGuards(JwtAuthGuard)
-  @Get("profile")
-  getProfile(@Request() req) {
-    return req.user;
-  }
+  // @UseGuards(JwtAuthGuard)
+  // @Get("profile")
+  // getProfile(@Request() req) {
+  //   return req.user;
+  // }
 
-  @Post("user")
-  @Roles(Role.Admin)
-  @UseGuards(RolesGuard)
-  @UseGuards(JwtAuthGuard)
-  createUser(@Request() req) {
-    console.log(req.user);
-    return req.user;
-  }
+  // @Post("user")
+  // @Roles(Role.Admin)
+  // @UseGuards(RolesGuard)
+  // @UseGuards(JwtAuthGuard)
+  // createUser(@Request() req) {
+  //   console.log(req.user);
+  //   return req.user;
+  // }
 }
