@@ -13,11 +13,12 @@ steps:
 
     settings:
       repo: ${DRONE_REPO}
+      registry: docker.pkg.github.com
       username:
         from_secret: docker_username
       password:
         from_secret: docker_password
 
-    commands:
-      - docker ps
-      # - docker build -t docker.pkg.github.com/${DRONE_REPO}/${DRONE_REPO_NAME}-image:${DRONE_TAG} ./docker
+    # commands:
+    #   - docker ps
+    # - docker build -t docker.pkg.github.com/${DRONE_REPO}/${DRONE_REPO_NAME}-image:${DRONE_TAG} ./docker
