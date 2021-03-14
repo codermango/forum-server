@@ -11,4 +11,5 @@ steps:
     image: docker
     # image: node:14.15.0-alpine
     commands:
-      - docker build -t docker.pkg.github.com/${DRONE_REPO}/${DRONE_REPO_NAME}-image:${DRONE_TAG} ./docker
+      - docker ps
+      # - docker build -t docker.pkg.github.com/${DRONE_REPO}/${DRONE_REPO_NAME}-image:${DRONE_TAG} ./docker
