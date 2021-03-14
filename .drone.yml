@@ -14,6 +14,7 @@ steps:
     settings:
       repo: ${DRONE_REPO}
       registry: docker.pkg.github.com
+      dockerfile: ./docker
       username:
         from_secret: docker_username
       password:
