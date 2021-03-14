@@ -2,6 +2,7 @@ import { Controller, Get, Inject, Post, Request, Session, UseGuards } from "@nes
 import { InjectRepository } from "@nestjs/typeorm";
 import { Topic } from "src/models/topic.entity";
 import { Repository } from "typeorm";
+import { AuthenticatedGuard } from "../auth/guards/authenticated.guard";
 import { LocalAuthGuard } from "../auth/guards/local-auth.guard";
 
 @Controller("topics")
@@ -9,10 +10,11 @@ export class TopicController {
   constructor(@InjectRepository(Topic) private readonly topicRepository: Repository<Topic>) {}
 
   @Get()
-  getTopics(@Request() req) {
+  getTopics() {
     return this.topicRepository.find();
   }
 
+  @UseGuards(AuthenticatedGuard)
   @Post()
   createTopic() {
     const topic = new Topic();
