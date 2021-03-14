@@ -16,9 +16,9 @@ steps:
       registry: ghcr.io
       dockerfile: ./docker/Dockerfile
       username:
-        from_secret: docker_username
+        from_secret: github_username
       password:
-        from_secret: docker_password
+        from_secret: github_username
 
     # commands:
     #   - docker ps
