@@ -4,7 +4,7 @@ name: default
 
 trigger:
   event:
-    - push
+    - tag
 
 steps:
   - name: greeting
