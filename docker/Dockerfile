@@ -4,7 +4,7 @@ WORKDIR /forum-server
 
 # Copy entire project (overrides package.json files so we have the version)
 COPY . .
-
+RUN yarn
 RUN yarn prebuild
 RUN yarn build
 
