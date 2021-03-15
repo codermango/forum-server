@@ -11,6 +11,10 @@ steps:
     image: plugins/docker
     # image: node:14.15.0-alpine
 
+    environment:
+      CR_PAT:
+        from_secret: CR_PAT
+
     settings:
       repo: ${DRONE_REPO}
       registry: ghcr.io/${DRONE_REPO_OWNER}
@@ -20,11 +24,8 @@ steps:
       # password:
       #   from_secret: github_password
 
-    environment:
-      CR_PAT:
-        from_secret: CR_PAT
-
     commands:
-      - echo $CR_PAT
+      # - echo $CR_PAT
+      - echo $CR_PAT | docker login ghcr.io -u ${DRONE_REPO_NAME} --password-stdin
     #   - docker ps
     # - docker build -t docker.pkg.github.com/${DRONE_REPO}/${DRONE_REPO_NAME}-image:${DRONE_TAG} ./docker
