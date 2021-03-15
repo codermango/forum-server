@@ -13,7 +13,7 @@ steps:
 
     settings:
       repo: ${DRONE_REPO}
-      registry: ghcr.io
+      registry: ghcr.io/${DRONE_REPO_OWNER}
       dockerfile: ./docker/Dockerfile
       username:
         from_secret: github_username
