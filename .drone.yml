@@ -19,12 +19,12 @@ steps:
       repo: ${DRONE_REPO}
       registry: ghcr.io/${DRONE_REPO_OWNER}
       dockerfile: ./docker/Dockerfile
-      # username:
-      #   from_secret: github_username
-      # password:
-      #   from_secret: github_password
+      username:
+        from_secret: github_username
+      password:
+        from_secret: CR_PAT
 
-    commands:
-      # - echo $CR_PAT
-      - echo $CR_PAT | docker login ghcr.io -u ${DRONE_REPO_NAME} --password-stdin
-      - docker build -t ghcr.io/${DRONE_REPO}/${DRONE_REPO_NAME}-image:${DRONE_TAG} ./docker
+    # commands:
+    #   # - echo $CR_PAT
+    #   - echo $CR_PAT | docker login ghcr.io -u ${DRONE_REPO_NAME} --password-stdin
+    #   - docker build -t ghcr.io/${DRONE_REPO}/${DRONE_REPO_NAME}-image:${DRONE_TAG} ./docker
