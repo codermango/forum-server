@@ -3,26 +3,28 @@ import * as session from "express-session";
 import { AppModule } from "./app.module";
 import * as passport from "passport";
 import * as MySQLStore from "express-mysql-session";
+import { ConfigService } from "@nestjs/config";
 
 const MysqlSessionStore = MySQLStore(session);
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+  const configService = app.get(ConfigService);
 
   app.use(
     session({
-      secret: "forum-session-screte",
+      secret: configService.get("SESSION_SECRET"),
       resave: false,
       saveUninitialized: false,
       cookie: {
-        maxAge: 10000,
+        maxAge: Number(configService.get("SESSION_MAX_AGE")),
       },
       store: new MysqlSessionStore({
-        host: "localhost",
-        port: 3306,
-        user: "root",
-        password: "root",
-        database: "forum",
+        host: configService.get("DATABASE_HOST"),
+        port: configService.get("DATABASE_PORT"),
+        user: configService.get("DATABASE_USER"),
+        password: configService.get("DATABASE_PASSWORD"),
+        database: configService.get("DATABASE_NAME"),
       }),
     }),
   );
