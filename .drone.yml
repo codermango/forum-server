@@ -37,5 +37,5 @@ steps:
         from_secret: linode_ssh_password
       port: 22
       script:
-        - echo hello
-        - echo world
+        - cd forum-server
+        - ./bin/start.sh qa
