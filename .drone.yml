@@ -39,4 +39,4 @@ steps:
       script:
         - cd forum-server
         - ls ./bin
-        - ./bin/start.sh qa
+        - sh ./bin/start.sh qa
