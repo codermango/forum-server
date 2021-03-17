@@ -38,5 +38,4 @@ steps:
       port: 22
       script:
         - cd forum-server
-        - git pull
         - ./bin/start.sh qa
