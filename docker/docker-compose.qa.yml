@@ -12,10 +12,6 @@ services:
       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
 
   forum-server:
-    environment:
-      - DB_USER=root
-      - DB_HOST=forum-mysql
-
     container_name: forum-server
     build:
       context: ../
