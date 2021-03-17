@@ -11,12 +11,12 @@ services:
       MYSQL_ROOT_PASSWORD: "root"
       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
 
-  # forum-server:
-  #   container_name: forum-server
-  #   build:
-  #     context: ../
-  #     dockerfile: "docker/Dockerfile"
-  #   ports:
-  #     - "4000:4000"
-  #   depends_on:
-  #     - forum-mysql
+  forum-server:
+    container_name: forum-server
+    build:
+      context: ../
+      dockerfile: "docker/Dockerfile"
+    ports:
+      - "4000:4000"
+    depends_on:
+      - forum-mysql

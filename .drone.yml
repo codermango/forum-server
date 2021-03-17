@@ -1,0 +1,41 @@
+kind: pipeline
+type: docker
+name: build
+
+trigger:
+  event:
+    - tag
+
+steps:
+  # - name: push-docker-image
+  #   image: plugins/docker
+
+  #   environment:
+  #     CR_PAT:
+  #       from_secret: CR_PAT
+
+  #   settings:
+  #     repo: ghcr.io/${DRONE_REPO}
+  #     registry: ghcr.io
+  #     dockerfile: ./docker/Dockerfile
+  #     username:
+  #       from_secret: ${DRONE_REPO_OWNER}
+  #     password:
+  #       from_secret: CR_PAT
+
+  # commands:
+  #   # - echo $CR_PAT
+  #   - echo $CR_PAT | docker login ghcr.io -u ${DRONE_REPO_NAME} --password-stdin
+  #   - docker build -t ghcr.io/${DRONE_REPO}/${DRONE_REPO_NAME}-image:${DRONE_TAG} ./docker
+
+  - name: ssh-deploy
+    image: appleboy/drone-ssh
+    settings:
+      host: 172.104.163.8
+      username: root
+      password:
+        from_secret: linode_ssh_password
+      port: 22
+      script:
+        - cd forum-server
+        - ./bin/start.sh qa
