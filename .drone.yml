@@ -39,4 +39,5 @@ steps:
       script:
         - cd forum-server
         - git config --global pull.ff only
+        - cat ./bin/start.sh
         - sh ./bin/start.sh qa
