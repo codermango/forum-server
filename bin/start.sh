@@ -1,5 +1,6 @@
 #! /bin/bash
 
+export env=$1
 
 if [ ! -e "$PWD/../forum-server-env.txt" ]; then
     echo "There is no forum-server-env file"
