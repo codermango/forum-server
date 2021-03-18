@@ -1,19 +1,13 @@
 #! /bin/bash
 
-# if ! git config --global pull.ff only; then 
-#     echo "Error pulling latest version from git"
-#     exit 5
-# fi
 
-echo $PWD
-
-if [ ! -e "$PWD/.env" ]; then
-    echo "There is no .env file"
+if [ ! -e "$PWD/../forum-server-env.txt" ]; then
+    echo "There is no forum-server-env file"
     exit 1
 fi
 
 # Load environmental variables
-if ! export $(cat $PWD/.env | xargs); then 
+if ! export $(cat $PWD/../forum-server-env.txt | xargs); then 
     echo "Unable to create environment variables"
     exit 2
 fi

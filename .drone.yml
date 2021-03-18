@@ -39,5 +39,4 @@ steps:
       script:
         - cd forum-server
         - git pull
-        - cat ./bin/start.sh
         - sh ./bin/start.sh qa
