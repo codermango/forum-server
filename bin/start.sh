@@ -6,6 +6,12 @@
 
 export env=$1
 
+# Load environmental variables
+if ! export $(cat $PWD/.env | xargs); then 
+    echo "Unable to create environment variables"
+    exit 2
+fi
+
 # Check if docker is installed
 if ! docker -v; then
     echo "Docker might not be installed"
