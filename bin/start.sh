@@ -13,7 +13,7 @@ if ! export $(cat $PWD/.env | xargs); then
     exit 2
 fi
 
-cat $PWD/.env
+echo $ENV
 
 # Check if docker is installed
 if ! docker -v; then
