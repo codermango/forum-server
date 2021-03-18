@@ -41,7 +41,7 @@ if ! docker-compose -f $PWD/docker/docker-compose.$env.yml stop; then
 fi
 
 # Start containers in background
-if ! docker-compose -f $PWD/docker/docker-compose.$env.yml up -d; then 
+if ! docker-compose -f $PWD/docker/docker-compose.$env.yml up -d --build; then 
     echo "Unable to start containers"
     exit 13
 fi
