@@ -2,13 +2,13 @@
 
 export env=$1
 
-if [ ! -e "$PWD/../forum-server-env.txt" ]; then
-    echo "There is no forum-server-env file"
+if [ ! -e "$PWD/.env" ]; then
+    echo "There is no .env file"
     exit 1
 fi
 
 # Load environmental variables
-if ! export $(cat $PWD/../forum-server-env.txt | xargs); then 
+if ! export $(cat $PWD/.env | xargs); then 
     echo "Unable to create environment variables"
     exit 2
 fi
