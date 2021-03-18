@@ -1,10 +1,10 @@
 #! /bin/bash
 
-# echo $0
-# echo $1
-# echo $2
 
-export env=$1
+if [ ! -e "$PWD/.env" ]; then
+    echo "There is no .env file"
+    exit 1
+fi
 
 # Load environmental variables
 if ! export $(cat $PWD/.env | xargs); then 
