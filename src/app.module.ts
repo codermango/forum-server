@@ -21,7 +21,7 @@ TypeOrmModule.forRootAsync({
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
       useFactory: (configService: ConfigService) => {
-        console.log(configService.get("DATABASE_HOST"));
+        console.log(configService.get("DATABASE_HOST"), "---------");
         return {
           type: "mysql",
           host: configService.get("DATABASE_HOST"),
