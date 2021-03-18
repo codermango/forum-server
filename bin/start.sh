@@ -1,9 +1,9 @@
 #! /bin/bash
 
-if ! git config --global pull.ff only; then 
-    echo "Error pulling latest version from git"
-    exit 5
-fi
+# if ! git config --global pull.ff only; then 
+#     echo "Error pulling latest version from git"
+#     exit 5
+# fi
 
 echo $PWD
 
