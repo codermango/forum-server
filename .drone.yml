@@ -38,6 +38,6 @@ steps:
       port: 22
       script:
         - cd forum-server
-        - git config --global pull.ff only
+        - git pull
         - cat ./bin/start.sh
         - sh ./bin/start.sh qa
