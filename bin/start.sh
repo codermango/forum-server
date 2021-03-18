@@ -5,6 +5,8 @@ if ! git config --global pull.ff only; then
     exit 5
 fi
 
+echo $PWD
+
 if [ ! -e "$PWD/.env" ]; then
     echo "There is no .env file"
     exit 1

@@ -38,5 +38,4 @@ steps:
       port: 22
       script:
         - cd forum-server
-        - ls ./bin
         - sh ./bin/start.sh qa
