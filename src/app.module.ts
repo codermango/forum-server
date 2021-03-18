@@ -15,14 +15,13 @@ TypeOrmModule.forRootAsync({
     }),
 });
 
-console.log(process.env.DATABASE_NAME);
-
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
       useFactory: (configService: ConfigService) => {
+        console.log(configService.get("DATABASE_HOST"));
         return {
           type: "mysql",
           host: configService.get("DATABASE_HOST"),
