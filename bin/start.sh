@@ -1,5 +1,9 @@
 #! /bin/bash
 
+if ! git config --global pull.ff only; then 
+    echo "Error pulling latest version from git"
+    exit 5
+fi
 
 if [ ! -e "$PWD/.env" ]; then
     echo "There is no .env file"
@@ -22,11 +26,6 @@ fi
 if ! docker-compose -v; then
     echo "Docker compose might not be installed"
     exit 4
-fi
-
-if ! git config --global pull.ff only; then 
-    echo "Error pulling latest version from git"
-    exit 5
 fi
 
 
